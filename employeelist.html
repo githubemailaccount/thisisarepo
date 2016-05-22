@@ -1,0 +1,80 @@
+<div class="container">
+    </br>
+    </br>
+    </br>
+    </br>
+
+
+<div class="col-xs-4 col-xs-offset-1">
+<!--<div class="col-xs-4">--><!--This line does not work to make this column appear in the same row, when rendered
+in a separate template from the one rendering the project and task lists columns.)-->
+    <p class="lead"><b>Employees List</b></p>
+    Employee with email: {{selectedemailofemployee.email}} is <b>selected</b>
+
+
+   <!--<div ng-controller="ResourcesController">--><!--You cannot call the same controller twice like that in the same
+   page. ResourcesController is already called in the projecttasklists.html template, in which ng-include
+   calls employeelist.html-->
+
+    <!--<div ng-controller="GetEmployeesListController">-->
+        <div class="table-responsive">
+            <table class="table" style="border: 1px dotted brown;">
+                <!--<tbody><tr ng-repeat="employee in employees | orderBy:employeessortoption | filter:search">-->
+                <tbody><tr ng-repeat="employee in employeelistsavedclientside | orderBy:employeessortoption | filter:search">
+
+                    <!--{{updateselectedemployeefortaskorproject(employees[employees.length-1])}}--><!--This
+                    causes the page to not even load properly, not even the project and task lists in the
+                    projecttasklists.html page in which employeelist.html is called via ng-include.-->
+
+                    <td></br></br><input name="oneemployeeatatime" type="radio" ng-model="employee.email" ng-value="employee.email" ng-click="updateselectedemployeefortaskorproject(employee.email)"></td>
+                    <td><div></br></br><b>Email</b>: {{employee.email}}</br></br> <b>Name</b>: {{employee.name}}</br></br><b>Created at</b>: {{employee.created_at}}</div></td></br>
+                </tr>
+                Any criteria: </br>
+                <input size="28" placeholder="Pull up employee (general)" ng-model="search.$"></br>
+                Name: </br>
+                <input size="28" placeholder="Pull up employee by name" ng-model="search.name"></br>
+                Email: </br>
+                <input size="28" placeholder="Pull up employee by email" ng-model="search.email"></br>
+                Created: </br>
+                <input size="28" placeholder="Pull up employee by when created" ng-model="search.created_at"></br>
+                </br>
+                <button id="orderemployeesbycreatedat" name="orderemployeesbycreatedat" style="background-color: #FFB6C1" ng-model="employees" ng-click="employeessetsortoption('created_at')">Order employees by date of creation.</button>
+                <button id="orderemployeesbyname" name="orderemployeesbyname" style="background-color: #FFB6C1" ng-model="employees" ng-click="employeessetsortoption('name')">Order employees by name.</button>
+                <button id="orderemployeesbyemail" name="orderemployeesbyemail" style="background-color: #FFB6C1" ng-model="employees" ng-click="employeessetsortoption('email')">Order employees by email.</button>
+
+
+
+                </br>
+                </br>
+                --------------------------------------</br>
+
+
+                <input name="addemployeetoproject" placeholder="Type project name here" value="" ng-model="addemployeetoprojectvalue"></br><button id="addemployeetoproject" style="background-color: #93FFE8" ng-click="addemployeetoproject(addemployeetoprojectvalue)">Add selected employee to project</button></br> {{successmessageaddingemployeetoproject}}
+                </br>
+                <input name="addemployeetotask" placeholder="Type task name here" value="" ng-model="addemployeetotaskvalue"></br><button id="addemployeetotask" style="background-color: #93FFE8" ng-click="addemployeetotask(addemployeetotaskvalue)">Add selected employee to task</button></br> {{successmessageaddingemployeetotask}}
+
+
+                </tbody></table>
+
+            <button id="orderemployeesbycreatedat" name="orderemployeesbycreatedat" style="background-color: #FFB6C1" ng-model="employees" ng-click="employeessetsortoption('created_at')">Order employees by date of creation.</button>
+            <button id="orderemployeesbyname" name="orderemployeesbyname" style="background-color: #FFB6C1" ng-model="employees" ng-click="employeessetsortoption('name')">Order employees by name.</button>
+            <button id="orderemployeesbyemail" name="orderemployeesbyemail" style="background-color: #FFB6C1" ng-model="employees" ng-click="employeessetsortoption('email')">Order employees by email.</button></br>
+
+            </br>Any criteria: </br>
+            <input size="28" placeholder="Pull up employee (general)" ng-model="search.$"></br>
+            Name: </br>
+            <input size="28" placeholder="Pull up employee by name" ng-model="search.name"></br>
+            Email: </br>
+            <input size="28" placeholder="Pull up employee by email" ng-model="search.email"></br>
+            Created: </br>
+            <input size="28" placeholder="Pull up employee by when created" ng-model="search.created_at"></br>
+            </br>
+
+        </div>
+        </div>
+    <!--</div>-->
+<!--</div>-->
+
+</div>
+
+<div class="container"></div>
